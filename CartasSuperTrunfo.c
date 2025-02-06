@@ -10,6 +10,7 @@ struct CartasSuperTrunfo
     char nomeDaCidade[255];
     unsigned long int populacao;
     float areaEmKm;
+    float pib;
     int numeroPontosTuristicos;
     float densidadePopulacional;
     float pibPerCapita;
@@ -48,14 +49,16 @@ int main() {
         printf("Insira a Área em Km² da cidade %d: ", contador);
         scanf("%f", &cartaLocal.areaEmKm);
 
-        printf("Insira o número de pontos turísticos da cidade %d: ", contador);
+        printf("Insira o pib da cidade %d: ", contador);
+        scanf("%f", &cartaLocal.pib);
+
+        printf("Insira o número de pontos turísticos da cidade %d: \n", contador);
         scanf("%d", &cartaLocal.numeroPontosTuristicos);
 
-        printf("Insira a densidade populacional da cidade %d: ", contador);
-        scanf("%f", &cartaLocal.densidadePopulacional);
+        //Calculando os atributos restantes
+        cartaLocal.densidadePopulacional = (int) cartaLocal.populacao / cartaLocal.areaEmKm;
 
-        printf("Insira o Pib per Capita da cidade %d: \n\n", contador);
-        scanf("%f", &cartaLocal.pibPerCapita);
+        cartaLocal.pibPerCapita = cartaLocal.pib / (int) cartaLocal.populacao;
 
         cartaLocal.superPoder = cartaLocal.pibPerCapita + cartaLocal.densidadePopulacional + cartaLocal.numeroPontosTuristicos + cartaLocal.areaEmKm + (int) cartaLocal.populacao;
 
@@ -89,13 +92,26 @@ int main() {
     // Exibição dos Dados das Cartas:
     // Sugestão: Utilize a função printf para exibir as informações das cartas cadastradas de forma clara e organizada.
     // Exiba os valores inseridos para cada atributo da cidade, um por linha.
-    printf("====================\n%s\n====================\nPopulação: %d\nÁrea em Km²: %f\nNúmero de pontos turísticos: %d\nDensidade Populacional: %f\nPib Per Capita: %f\nSuper poder: %f\n\n\n", carta1.nomeDaCidade, carta1.populacao, carta1.areaEmKm, carta1.numeroPontosTuristicos, carta1.densidadePopulacional, carta1.pibPerCapita, carta1.superPoder);
+    printf("====================\n%s\n====================\nPopulação: %d\nÁrea em Km²: %f\nPIB: %f\nNúmero de pontos turísticos: %d\nDensidade Populacional: %f\nPib Per Capita: %f\nSuper poder: %f\n\n\n", carta1.nomeDaCidade, carta1.populacao, carta1.areaEmKm,carta1.pib,carta1.numeroPontosTuristicos, carta1.densidadePopulacional, carta1.pibPerCapita, carta1.superPoder);
 
-    printf("====================\n%s\n====================\nPopulação: %d\nÁrea em Km²: %f\nNúmero de pontos turísticos: %d\nDensidade Populacional: %f\nPib Per Capita: %f\nSuper poder: %f\n\n\n", carta2.nomeDaCidade, carta2.populacao, carta2.areaEmKm, carta2.numeroPontosTuristicos, carta2.densidadePopulacional, carta2.pibPerCapita, carta2.superPoder);
+    printf("====================\n%s\n====================\nPopulação: %d\nÁrea em Km²: %f\nPIB: %f\nNúmero de pontos turísticos: %d\nDensidade Populacional: %f\nPib Per Capita: %f\nSuper poder: %f\n\n\n", carta2.nomeDaCidade, carta2.populacao, carta2.areaEmKm,carta2.pib,carta2.numeroPontosTuristicos, carta2.densidadePopulacional, carta2.pibPerCapita, carta2.superPoder);
 
-    printf("====================\n%s\n====================\nPopulação: %d\nÁrea em Km²: %f\nNúmero de pontos turísticos: %d\nDensidade Populacional: %f\nPib Per Capita: %f\nSuper poder: %f\n\n\n", carta3.nomeDaCidade, carta3.populacao, carta3.areaEmKm, carta3.numeroPontosTuristicos, carta3.densidadePopulacional, carta3.pibPerCapita, carta3.superPoder);
+    printf("====================\n%s\n====================\nPopulação: %d\nÁrea em Km²: %f\nPIB: %f\nNúmero de pontos turísticos: %d\nDensidade Populacional: %f\nPib Per Capita: %f\nSuper poder: %f\n\n\n", carta3.nomeDaCidade, carta3.populacao, carta3.areaEmKm,carta3.pib,carta3.numeroPontosTuristicos, carta3.densidadePopulacional, carta3.pibPerCapita, carta3.superPoder);
+    
+    printf("====================\n%s\n====================\nPopulação: %d\nÁrea em Km²: %f\nPIB: %f\nNúmero de pontos turísticos: %d\nDensidade Populacional: %f\nPib Per Capita: %f\nSuper poder: %f\n\n\n", carta4.nomeDaCidade, carta4.populacao, carta4.areaEmKm,carta4.pib,carta4.numeroPontosTuristicos, carta4.densidadePopulacional, carta4.pibPerCapita, carta4.superPoder);
+    
 
-    printf("====================\n%s\n====================\nPopulação: %d\nÁrea em Km²: %f\nNúmero de pontos turísticos: %d\nDensidade Populacional: %f\nPib Per Capita: %f\nSuper poder: %f\n\n\n", carta4.nomeDaCidade, carta4.populacao, carta4.areaEmKm, carta4.numeroPontosTuristicos, carta4.densidadePopulacional, carta4.pibPerCapita, carta4.superPoder);
+    //Comparação das cartas
+    struct CartasSuperTrunfo cartaComparacao1;
+    struct CartasSuperTrunfo cartaComparacao2;
+    char nomeDasCidades[4][255] = {carta1.nomeDaCidade, carta2.nomeDaCidade, carta3.nomeDaCidade, carta4.nomeDaCidade};
+    int indexArr;
+
+    printf("===================\nComparador de Cartas\n===================");
+    for (indexArr = 0; indexArr <= 4; indexArr++) {
+        printf("[%d] %s\n", indexArr, nomeDasCidades[indexArr]);
+    }
+    printf("Escolha a primeira carta que você quer comparar: ");
 
     return 0;
 }
