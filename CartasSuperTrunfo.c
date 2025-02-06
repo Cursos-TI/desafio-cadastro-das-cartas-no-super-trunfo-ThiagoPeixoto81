@@ -39,7 +39,7 @@ int main() {
         char nomeDaCidadeLocal[255];
 
         //Pedindo os dados ao usuário
-        printf("Insira o nome da cidade %d: ", contador);
+        printf("\n\nInsira o nome da cidade %d: ", contador);
         scanf("%s", &nomeDaCidadeLocal);
         strcpy(cartaLocal.nomeDaCidade, nomeDaCidadeLocal );
 
@@ -52,7 +52,7 @@ int main() {
         printf("Insira o pib da cidade %d: ", contador);
         scanf("%f", &cartaLocal.pib);
 
-        printf("Insira o número de pontos turísticos da cidade %d: \n", contador);
+        printf("Insira o número de pontos turísticos da cidade %d: ", contador);
         scanf("%d", &cartaLocal.numeroPontosTuristicos);
 
         //Calculando os atributos restantes
@@ -104,12 +104,14 @@ int main() {
     //Comparação das cartas
     struct CartasSuperTrunfo cartaComparacao1;
     struct CartasSuperTrunfo cartaComparacao2;
-    char nomeDasCidades[4][255] = {carta1.nomeDaCidade, carta2.nomeDaCidade, carta3.nomeDaCidade, carta4.nomeDaCidade};
-    int indexArr;
+    char *nomeDasCidades[] = {carta1.nomeDaCidade, carta2.nomeDaCidade, carta3.nomeDaCidade, carta4.nomeDaCidade};
 
-    printf("===================\nComparador de Cartas\n===================");
+    int indexArr;
+    int choice;
+
+    printf("===================\nComparador de Cartas\n===================\n\n");
     for (indexArr = 0; indexArr <= 4; indexArr++) {
-        printf("[%d] %s\n", indexArr, nomeDasCidades[indexArr]);
+        printf("[%d] %s\n", indexArr, nomeDasCidades[indexArr]); 
     }
     printf("Escolha a primeira carta que você quer comparar: ");
 
