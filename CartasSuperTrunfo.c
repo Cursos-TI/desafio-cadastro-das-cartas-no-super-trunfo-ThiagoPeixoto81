@@ -15,7 +15,6 @@ struct CartasSuperTrunfo
     float densidadePopulacional;
     float pibPerCapita;
     float superPoder;
-
 };
 
 
@@ -25,15 +24,13 @@ int main() {
     //Criando as cartas que serão utilizadas
     struct CartasSuperTrunfo carta1;
     struct CartasSuperTrunfo carta2;
-    struct CartasSuperTrunfo carta3;
-    struct CartasSuperTrunfo carta4;
     int contador;
 
     // Cadastro das Cartas:
     // Sugestão: Utilize a função scanf para capturar as entradas do usuário para cada atributo.
     // Solicite ao usuário que insira as informações de cada cidade, como o código, nome, população, área, etc.
 
-    for(contador = 1; contador <= 4; contador++) {
+    for(contador = 1; contador <= 2; contador++) {
         //Criando um carta local
         struct CartasSuperTrunfo cartaLocal;
         char nomeDaCidadeLocal[255];
@@ -72,21 +69,11 @@ int main() {
                carta2 = cartaLocal;
             break;
 
-            case 3:
-                carta3 = cartaLocal;;
-            break;
-
-            case 4:
-                carta4 = cartaLocal;
-            break;
-
             default:
             break;
         }
 
     };
-
-
 
     
     // Exibição dos Dados das Cartas:
@@ -95,25 +82,95 @@ int main() {
     printf("====================\n%s\n====================\nPopulação: %d\nÁrea em Km²: %f\nPIB: %f\nNúmero de pontos turísticos: %d\nDensidade Populacional: %f\nPib Per Capita: %f\nSuper poder: %f\n\n\n", carta1.nomeDaCidade, carta1.populacao, carta1.areaEmKm,carta1.pib,carta1.numeroPontosTuristicos, carta1.densidadePopulacional, carta1.pibPerCapita, carta1.superPoder);
 
     printf("====================\n%s\n====================\nPopulação: %d\nÁrea em Km²: %f\nPIB: %f\nNúmero de pontos turísticos: %d\nDensidade Populacional: %f\nPib Per Capita: %f\nSuper poder: %f\n\n\n", carta2.nomeDaCidade, carta2.populacao, carta2.areaEmKm,carta2.pib,carta2.numeroPontosTuristicos, carta2.densidadePopulacional, carta2.pibPerCapita, carta2.superPoder);
-
-    printf("====================\n%s\n====================\nPopulação: %d\nÁrea em Km²: %f\nPIB: %f\nNúmero de pontos turísticos: %d\nDensidade Populacional: %f\nPib Per Capita: %f\nSuper poder: %f\n\n\n", carta3.nomeDaCidade, carta3.populacao, carta3.areaEmKm,carta3.pib,carta3.numeroPontosTuristicos, carta3.densidadePopulacional, carta3.pibPerCapita, carta3.superPoder);
-    
-    printf("====================\n%s\n====================\nPopulação: %d\nÁrea em Km²: %f\nPIB: %f\nNúmero de pontos turísticos: %d\nDensidade Populacional: %f\nPib Per Capita: %f\nSuper poder: %f\n\n\n", carta4.nomeDaCidade, carta4.populacao, carta4.areaEmKm,carta4.pib,carta4.numeroPontosTuristicos, carta4.densidadePopulacional, carta4.pibPerCapita, carta4.superPoder);
     
 
     //Comparação das cartas
-    struct CartasSuperTrunfo cartaComparacao1;
-    struct CartasSuperTrunfo cartaComparacao2;
-    char *nomeDasCidades[] = {carta1.nomeDaCidade, carta2.nomeDaCidade, carta3.nomeDaCidade, carta4.nomeDaCidade};
 
-    int indexArr;
-    int choice;
+    int pontosCarta1 = 0;
+    int pontosCarta2 = 0;
 
-    printf("===================\nComparador de Cartas\n===================\n\n");
-    for (indexArr = 0; indexArr <= 4; indexArr++) {
-        printf("[%d] %s\n", indexArr, nomeDasCidades[indexArr]); 
-    }
-    printf("Escolha a primeira carta que você quer comparar: ");
+    printf("====================\n%s vs %s\n====================\n\n", carta1.nomeDaCidade, carta2.nomeDaCidade);
+
+    printf("População de %s: %d\nPopulação de %s: %d\n", carta1.nomeDaCidade, carta1.populacao,carta2.nomeDaCidade, carta2.populacao);
+
+    if (carta1.populacao > carta2.populacao){
+        pontosCarta1++;
+        printf("%s tem maior população, por isso venceu nesse atributo\n\n", carta1.nomeDaCidade);
+    } else {
+        pontosCarta2++;
+        printf("%s tem maior população, por isso venceu nesse atributo\n\n", carta2.nomeDaCidade);
+    };
+
+    printf("PIB de %s: %f\nPIB de %s: %f\n", carta1.nomeDaCidade, carta1.pib,carta2.nomeDaCidade, carta2.pib);
+
+    if (carta1.pib > carta2.pib){
+        pontosCarta1++;
+        printf("%s tem maior PIB, por isso venceu nesse atributo\n\n", carta1.nomeDaCidade);
+    } else {
+        pontosCarta2++;
+        printf("%s tem maior PIB, por isso venceu nesse atributo\n\n", carta2.nomeDaCidade);
+    };
+
+    printf("Área em Km² de %s: %f\nÁrea em Km² de %s: %f\n", carta1.nomeDaCidade, carta1.areaEmKm,carta2.nomeDaCidade, carta2.areaEmKm);
+
+    if (carta1.areaEmKm > carta2.areaEmKm){
+        pontosCarta1++;
+        printf("%s tem maior extensão territorial, por isso venceu nesse atributo\n\n", carta1.nomeDaCidade);
+    } else {
+        pontosCarta2++;
+        printf("%s tem maior extensão territorial, por isso venceu nesse atributo\n\n", carta2.nomeDaCidade);
+    };
+
+    printf("Número de pontos turísticos de %s: %d\nNúmero de pontos turísticos de %s: %d\n", carta1.nomeDaCidade, carta1.numeroPontosTuristicos,carta2.nomeDaCidade, carta2.numeroPontosTuristicos);
+
+    if (carta1.numeroPontosTuristicos > carta2.numeroPontosTuristicos){
+        pontosCarta1++;
+        printf("%s tem mais pontos turísticos, por isso venceu nesse atributo\n\n", carta1.nomeDaCidade);
+    } else {
+        pontosCarta2++;
+        printf("%s tem mais pontos turísticos, por isso venceu nesse atributo\n\n", carta2.nomeDaCidade);
+    };
+
+
+    printf("Densidade populacional de %s: %f\nDensidade populacional de %s: %f\n", carta1.nomeDaCidade, carta1.densidadePopulacional,carta2.nomeDaCidade, carta2.densidadePopulacional);
+
+    if (carta1.densidadePopulacional < carta2.densidadePopulacional){
+        pontosCarta1++;
+        printf("%s tem menor densidade populacional, por isso venceu nesse atributo\n\n", carta1.nomeDaCidade);
+    } else {
+        pontosCarta2++;
+        printf("%s tem menor densidade populacional, por isso venceu nesse atributo\n\n", carta2.nomeDaCidade);
+    };
+
+
+    printf("Pib per capita de %s: %f\nPib per capita de %s: %f\n", carta1.nomeDaCidade, carta1.pibPerCapita,carta2.nomeDaCidade, carta2.pibPerCapita);
+
+    if (carta1.pibPerCapita > carta2.pibPerCapita){
+        pontosCarta1++;
+        printf("%s tem maior pib per capita, por isso venceu nesse atributo\n\n", carta1.nomeDaCidade);
+    } else {
+        pontosCarta2++;
+        printf("%s tem maior pib per capita, por isso venceu nesse atributo\n\n", carta2.nomeDaCidade);
+    };
+
+
+    printf("Super poder de %s: %f\nSuper poder de %s: %f\n", carta1.nomeDaCidade, carta1.superPoder,carta2.nomeDaCidade, carta2.superPoder);
+
+    if (carta1.superPoder > carta2.superPoder){
+        pontosCarta1++;
+        printf("%s tem maior Super poder, por isso venceu nesse atributo\n\n", carta1.nomeDaCidade);
+    } else {
+        pontosCarta2++;
+        printf("%s tem maior Super poder, por isso venceu nesse atributo\n\n", carta2.nomeDaCidade);
+    };
+
+
+    if (pontosCarta1 > pontosCarta2){
+        printf("====================\n%s %d x %d %s\n====================\n\n%s VENCEU!!!\n", carta1.nomeDaCidade, pontosCarta1, pontosCarta2, carta2.nomeDaCidade, carta1.nomeDaCidade);
+    } else {
+        printf("====================\n%s %d x %d %s\n====================\n%s VENCEU!!!\n", carta1.nomeDaCidade, pontosCarta1, pontosCarta2, carta2.nomeDaCidade, carta2.nomeDaCidade);
+    };
+    
 
     return 0;
 }
